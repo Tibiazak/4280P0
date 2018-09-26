@@ -12,36 +12,97 @@ int length;
 node * treePtr;
 node tree;
 
+void recurseAddTree(node * currentNode, char* string)
+{
+    int len = strlen(string);
+    int templen = strlen(currentNode->value);
+    if(templen == 0)
+    {
+        printf("Add to this node\n");
+        strcpy(currentNode->value, string);
+        return;
+    }
+    else if (len == templen)
+    {
+        printf("Need to add to this node that already exists\n");
+    }
+    else if(len > templen)
+    {
+        printf("Needs to go into right subtree\n");
+        if(!currentNode->right)
+        {
+            printf("No right subtree, creating...\n");
+            node tempnode;
+            strcpy(tempnode.value, string);
+            currentNode->right = &tempnode;
+            return;
+        }
+        else
+        {
+            printf("Right subtree exists, recursing\n");
+            recurseAddTree(currentNode->right, string);
+        }
+    }
+    else if(len < templen)
+    {
+        printf("Needs to go into left subtree\n");
+        if(!currentNode->left)
+        {
+            printf("No left subtree, creating...\n");
+            node tempnode;
+            strcpy(tempnode.left, string);
+            currentNode->left = &tempnode;
+            return;
+        }
+        else
+        {
+            printf("Left subtree exists, recursing\n");
+            recurseAddTree(currentNode->left, string);
+        }
+    }
+}
+
 node * buildTree(FILE * fp)
 {
     while(fscanf(fp, "%s", buf) != EOF)
     {
-        length = strlen(buf);
-        if(!treePtr)
-        {
-            printf("Null tree pointer, creating tree\n");
-            tree.left = NULL;
-            tree.right = NULL;
-            strcpy(tree.value, buf);
-            treePtr = &tree;
-        }
-        else
-        {
-            printf("Tree exists, adding data\n");
-            int templen = strlen(treePtr->value);
-            if (length == templen)
-            {
-                printf("Strings are the same length\n");
-            }
-            else if(length > templen)
-            {
-                printf("New string is longer than old string\n");
-            }
-            else
-            {
-                printf("New string is shorter than old string\n");
-            }
-        }
+        recurseAddTree(treePtr, buf[0]);
+//        length = strlen(buf);
+//        if(!treePtr)
+//        {
+//            printf("Null tree pointer, creating tree\n");
+//            tree.left = NULL;
+//            tree.right = NULL;
+//            strcpy(tree.value, buf);
+//            treePtr = &tree;
+//        }
+//        else
+//        {
+//            printf("Tree exists, adding data\n");
+//            int templen = strlen(treePtr->value);
+//            if (length == templen)
+//            {
+//                printf("Strings are the same length\n");
+//            }
+//            else if(length > templen)
+//            {
+//                printf("New string is longer than old string\n");
+//                if(!tree.right)
+//                {
+//                    printf("No right subtree, creating one\n");
+//                    node tempnode;
+//                    tempnode.right = NULL;
+//                    tempnode.left = NULL;
+//                    strcpy(tempnode.value, buf);
+//                    treePtr->right = &tempnode;
+//                }
+//                else if(strlen(tree.right->value) >= )
+//            }
+//            else
+//            {
+//                printf("New string is shorter than old string\n");
+//            }
+//        }
     }
     return treePtr;
 }
