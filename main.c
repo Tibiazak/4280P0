@@ -7,7 +7,8 @@
 int main(int argc, char * argv[])
 {
     FILE * fp;
-    char str[100];
+
+//    char str[100];
 
     if (argc == 1)
     {
@@ -20,9 +21,9 @@ int main(int argc, char * argv[])
         fp = fopen(argv[1], "r");
     }
 
-    fscanf(fp, "%s", str);
-
-    printf("Read: %s\n", str);
+//    fscanf(fp, "%s", str);
+//
+//    printf("Read: %s\n", str);
 
     if (fp != stdin)
     {
