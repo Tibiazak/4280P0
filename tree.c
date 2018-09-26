@@ -5,6 +5,7 @@
 #include "tree.h"
 #include "node.h"
 #include <string.h>
+#include <stdio.h>
 
 char buf[100];
 int length;
