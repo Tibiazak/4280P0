@@ -43,6 +43,7 @@ node * buildTree(FILE * fp)
                 printf("New string is shorter than old string\n");
             }
         }
+        fscanf(fp, "%s", buf);
     }
     return treePtr;
 }
