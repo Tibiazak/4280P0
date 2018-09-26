@@ -14,8 +14,7 @@ node tree;
 
 node * buildTree(FILE * fp)
 {
-    fscanf(fp, "%s", buf);
-    while(buf != EOF)
+    while(fscanf(fp, "%s", buf) != EOF)
     {
         length = strlen(buf);
         if(!treePtr)
@@ -43,7 +42,6 @@ node * buildTree(FILE * fp)
                 printf("New string is shorter than old string\n");
             }
         }
-        fscanf(fp, "%s", buf);
     }
     return treePtr;
 }
