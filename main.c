@@ -3,6 +3,8 @@
 // 9/6/2018
 
 #include <stdio.h>
+#include "node.h"
+#include "tree.h"
 
 int main(int argc, char * argv[])
 {
@@ -24,6 +26,8 @@ int main(int argc, char * argv[])
 //    fscanf(fp, "%s", str);
 //
 //    printf("Read: %s\n", str);
+
+
 
     if (fp != stdin)
     {
