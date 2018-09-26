@@ -8,10 +8,10 @@
 
 char buf[100];
 int length;
-Node * treePtr;
-Node tree;
+node * treePtr;
+node tree;
 
-Node * buildTree(FILE * fp)
+node * buildTree(FILE * fp)
 {
     fscanf(fp, %s, buf);
     while(buf != EOF)
