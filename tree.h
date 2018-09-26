@@ -5,4 +5,6 @@
 #ifndef TREE_H
 #define TREE_H
 
+Node * buildTree(FILE * fp);
+
 #endif //TREE_H

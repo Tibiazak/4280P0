@@ -8,7 +8,7 @@
 typedef struct Node{
     struct Node * left;
     struct Node * right;
-    char * value;
+    char value[20];
 } node;
 
 #endif //NODE_H
