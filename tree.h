@@ -4,6 +4,8 @@
 
 #ifndef TREE_H
 #define TREE_H
+#include <stdio.h>
+#include "node.h"
 
 node * buildTree(FILE * fp);
 
