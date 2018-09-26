@@ -9,6 +9,7 @@
 int main(int argc, char * argv[])
 {
     FILE * fp;
+    node *tree;
 
 //    char str[100];
 
@@ -27,7 +28,9 @@ int main(int argc, char * argv[])
 //
 //    printf("Read: %s\n", str);
 
+    tree = buildTree(fp);
 
+    printf("Value of root node is: %s\n", tree->value);
 
     if (fp != stdin)
     {

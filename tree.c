@@ -43,4 +43,5 @@ node * buildTree(FILE * fp)
             }
         }
     }
+    return treePtr;
 }
