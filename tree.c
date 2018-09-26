@@ -15,14 +15,15 @@ node tree;
 void recurseAddTree(node * currentNode, char* string)
 {
     int len = strlen(string);
-    int templen = strlen(currentNode->value);
-    if(templen == 0)
+    if(!currentNode->value)
     {
         printf("Add to this node\n");
         strcpy(currentNode->value, string);
         return;
     }
-    else if (len == templen)
+    int templen = strlen(currentNode->value);
+
+    if (len == templen)
     {
         printf("Need to add to this node that already exists\n");
     }
