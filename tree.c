@@ -14,7 +14,7 @@ node tree;
 
 node * buildTree(FILE * fp)
 {
-    fscanf(fp, %s, buf);
+    fscanf(fp, "%s", buf);
     while(buf != EOF)
     {
         length = strlen(buf);
