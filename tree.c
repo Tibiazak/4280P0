@@ -175,7 +175,7 @@ void postOrderTraversal(node * treePtr)
     printf("Current node: %s\n", treePtr->value);
 }
 
-static void printParseTree(node *rootP,int level) {
+void printParseTree(node *rootP,int level) {
     if (rootP==NULL) return;
     printf("%*c%d:%-9s ",level*2,' ',level,rootP->value); // assume some info printed as string
     printf("\n");
