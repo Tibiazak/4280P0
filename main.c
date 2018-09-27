@@ -11,18 +11,19 @@ int main(int argc, char * argv[])
 {
     FILE * fp;
     node *tree;
-
-//    char str[100];
+    char * filename;
 
     if (argc == 1)
     {
         printf("No file given, read from stdin.\n");
         fp = stdin;
+        filename = "out";
     }
     else
     {
         printf("File listed: %s\n", argv[argc-1]);
         fp = fopen(argv[1], "r");
+        filename = argv[1];
     }
 
     if (fp != NULL)
@@ -41,11 +42,14 @@ int main(int argc, char * argv[])
         printf("Error, invalid file!\n");
         exit(1);
     }
+
+
     tree = buildTree(fp);
 
     preOrderTraversal(tree);
     inOrderTraversal(tree);
     postOrderTraversal(tree);
+    printParseTree(tree, 0);
     freeTree(tree);
 
     if (fp != stdin)
