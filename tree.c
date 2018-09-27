@@ -11,14 +11,19 @@
 char buf[100];
 int length;
 node tree;
+int stringMax;
 
 node * createNode()
 {
     node* newnode = (node *)malloc(sizeof(node));
     newnode->right = NULL;
     newnode->left = NULL;
-    newnode->values[0][0] = 0;
-    printf("initialized first value\n");
+    int i;
+    for(i = 0; i < stringMax; i++)
+    {
+        newnode->values[i][0] = 0;
+    }
+//    printf("initialized first value\n");
     return newnode;
 }
 
@@ -38,7 +43,28 @@ void recurseAddTree(node * currentNode, char* string)
 //    printf("Got value\n");
     if (len == templen)
     {
-//        printf("Need to add to this node that already exists\n");
+        printf("Need to add to this node that already exists\n");
+        int ptr = 0;
+        while(true)
+        {
+            if(currentNode->values[ptr][0] == 0)
+            {
+                strcpy(currentNode->values[ptr], string);
+                return;
+            }
+            else
+            {
+                if( ptr > stringMax)
+                {
+                    printf("ERROR! Too many strings of the same length. Current max: %i\n", stringMax);
+                    exit(1);
+                }
+                else
+                {
+                    ptr++;
+                }
+            }
+        }
     }
     else if(len > templen)
     {
