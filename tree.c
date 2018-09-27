@@ -6,6 +6,7 @@
 #include "node.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 char buf[100];
 int length;
@@ -61,7 +62,7 @@ void recurseAddTree(node * currentNode, char* string)
         if(!currentNode->left)
         {
             printf("No left subtree, creating...\n");
-            node tempnode = createNode();
+            node * tempnode = createNode();
             strcpy(tempnode.value, string);
             currentNode->left = tempnode;
             return;
