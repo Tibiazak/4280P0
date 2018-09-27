@@ -17,7 +17,7 @@ node * createNode()
     node* newnode = (node *)malloc(sizeof(node));
     newnode->right = NULL;
     newnode->left = NULL;
-    newnode->value[0] = 0;
+    newnode->values[0][0] = 0;
     return newnode;
 }
 
@@ -25,14 +25,14 @@ void recurseAddTree(node * currentNode, char* string)
 {
 //    printf("Entered recurseAddTree\n");
     int len = strlen(string);
-    if(currentNode->value[0] == 0)
+    if(currentNode->values[0][0] == 0)
     {
 //        printf("Add to this node\n");
-        strcpy(currentNode->value, string);
+        strcpy(currentNode->values[0][0], string);
         return;
     }
 //    printf("Getting length of value in current node\n");
-    int templen = strlen(currentNode->value);
+    int templen = strlen(currentNode->values[0]);
 
 //    printf("Got value\n");
     if (len == templen)
@@ -141,7 +141,7 @@ void postOrderTraversal(node * treePtr)
 
 void printParseTree(node *rootP,int level) {
     if (rootP==NULL) return;
-    printf("%*c%d:%-9s ",level*2,' ',(int)strlen(rootP->value),rootP->value); // assume some info printed as string
+    printf("%*c%d:%-9s ",level*2,' ',(int)strlen(rootP->values[0]),rootP->values[0]); // assume some info printed as string
     printf("\n");
     printParseTree(rootP->left,level+1);
     printParseTree(rootP->right,level+1);
