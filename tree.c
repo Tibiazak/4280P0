@@ -11,15 +11,6 @@ char buf[100];
 int length;
 node tree;
 
-node * initializeNode()
-{
-    node tempnode;
-    tempnode.right = NULL;
-    tempnode.left = NULL;
-    tempnode.value[0] = 0;
-    return &tempnode;
-}
-
 void recurseAddTree(node * currentNode, char* string)
 {
     printf("Entered recurseAddTree\n");
@@ -44,9 +35,9 @@ void recurseAddTree(node * currentNode, char* string)
         if(!currentNode->right)
         {
             printf("No right subtree, creating...\n");
-            node * tempnode = initializeNode();
-            strcpy(tempnode->value, string);
-            currentNode->right = tempnode;
+            node tempnode;
+            strcpy(tempnode.value, string);
+            currentNode->right = &tempnode;
             return;
         }
         else
@@ -61,9 +52,9 @@ void recurseAddTree(node * currentNode, char* string)
         if(!currentNode->left)
         {
             printf("No left subtree, creating...\n");
-            node * tempnode = initializeNode();
-            strcpy(tempnode->value, string);
-            currentNode->left = tempnode;
+            node tempnode;
+            strcpy(tempnode.value, string);
+            currentNode->left = &tempnode;
             return;
         }
         else
@@ -77,8 +68,6 @@ void recurseAddTree(node * currentNode, char* string)
 node * buildTree(FILE * fp)
 {
     node * treePtr = &tree;
-    treePtr->right = NULL;
-    treePtr->left = NULL;
     treePtr->value[0] = 0;
     while(fscanf(fp, "%s", buf) != EOF)
     {
