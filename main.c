@@ -30,7 +30,7 @@ int main(int argc, char * argv[])
 
     tree = buildTree(fp);
 
-    printf("Value of root node is: %s\n", tree->value);
+    inOrderTraversal(tree);
 
     if (fp != stdin)
     {

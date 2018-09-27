@@ -8,5 +8,6 @@
 #include "node.h"
 
 node * buildTree(FILE * fp);
+void inOrderTraversal(node * treePtr);
 
 #endif //TREE_H

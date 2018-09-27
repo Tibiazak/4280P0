@@ -9,8 +9,6 @@
 
 char buf[100];
 int length;
-node * treePtr;
-node tree;
 
 void recurseAddTree(node * currentNode, char* string)
 {
@@ -68,7 +66,8 @@ void recurseAddTree(node * currentNode, char* string)
 
 node * buildTree(FILE * fp)
 {
-    treePtr = &tree;
+    node tree;
+    node * treePtr = &tree;
     treePtr->value[0] = 0;
     while(fscanf(fp, "%s", buf) != EOF)
     {
@@ -111,4 +110,17 @@ node * buildTree(FILE * fp)
 //        }
     }
     return treePtr;
+}
+
+void inOrderTraversal(node * treePtr)
+{
+    if(treePtr->left)
+    {
+        inOrderTraversal(treePtr->left);
+    }
+    printf("Current node: %s\n", treePtr->value);
+    if(treePtr->right)
+    {
+        inOrderTraversal(treePtr->right);
+    }
 }
