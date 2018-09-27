@@ -18,6 +18,7 @@ node * createNode()
     newnode->right = NULL;
     newnode->left = NULL;
     newnode->values[0][0] = 0;
+    printf("initialized first value\n");
     return newnode;
 }
 
