@@ -24,10 +24,22 @@ int main(int argc, char * argv[])
         fp = fopen(argv[1], "r");
     }
 
-//    fscanf(fp, "%s", str);
-//
-//    printf("Read: %s\n", str);
-
+    if (fp != NULL)
+    {
+        fseek(fp, 0, SEEK_END);
+        int size = ftell(fp);
+        if (size == 0)
+        {
+            printf("Error, no input!\n");
+            exit(1);
+        }
+        fseek(fp, 0, SEEK_SET);
+    }
+    else
+    {
+        printf("Error, invalid file!\n");
+        exit(1);
+    }
     tree = buildTree(fp);
 
     preOrderTraversal(tree);
