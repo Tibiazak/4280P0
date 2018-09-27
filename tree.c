@@ -16,7 +16,7 @@ void recurseAddTree(node * currentNode, char* string)
 {
     printf("Entered recurseAddTree\n");
     int len = strlen(string);
-    if((currentNode->value) == "")
+    if((currentNode->value) == NULL)
     {
         printf("Add to this node\n");
         strcpy(currentNode->value, string);
@@ -69,7 +69,7 @@ void recurseAddTree(node * currentNode, char* string)
 node * buildTree(FILE * fp)
 {
     treePtr = &tree;
-    strcpy(treePtr->value, "");
+    strcpy(treePtr->value, NULL);
     while(fscanf(fp, "%s", buf) != EOF)
     {
         recurseAddTree(treePtr, &buf[0]);
