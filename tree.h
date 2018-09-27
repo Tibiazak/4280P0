@@ -9,5 +9,6 @@
 
 node * buildTree(FILE * fp);
 void inOrderTraversal(node * treePtr);
+void freeTree(node * treePtr);
 
 #endif //TREE_H

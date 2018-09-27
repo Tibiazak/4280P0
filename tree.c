@@ -11,6 +11,15 @@ char buf[100];
 int length;
 node tree;
 
+node * createNode()
+{
+    node* newnode = (node *)malloc(sizeof(node));
+    newnode->right = NULL;
+    newnode->left = NULL;
+    newnode->value[0] = 0;
+    return newnode;
+}
+
 void recurseAddTree(node * currentNode, char* string)
 {
     printf("Entered recurseAddTree\n");
@@ -35,11 +44,9 @@ void recurseAddTree(node * currentNode, char* string)
         if(!currentNode->right)
         {
             printf("No right subtree, creating...\n");
-            node tempnode;
-            strcpy(tempnode.value, string);
-            tempnode.right = NULL;
-            tempnode.left = NULL;
-            currentNode->right = &tempnode;
+            node * tempnode = createNode();
+            strcpy(tempnode->value, string);
+            currentNode->left = tempnode;
             return;
         }
         else
@@ -54,11 +61,9 @@ void recurseAddTree(node * currentNode, char* string)
         if(!currentNode->left)
         {
             printf("No left subtree, creating...\n");
-            node tempnode;
+            node tempnode = createNode();
             strcpy(tempnode.value, string);
-            tempnode.right = NULL;
-            tempnode.left = NULL;
-            currentNode->left = &tempnode;
+            currentNode->left = tempnode;
             return;
         }
         else
@@ -71,8 +76,7 @@ void recurseAddTree(node * currentNode, char* string)
 
 node * buildTree(FILE * fp)
 {
-    node * treePtr = &tree;
-    treePtr->value[0] = 0;
+    node * treePtr = createNode();
     while(fscanf(fp, "%s", buf) != EOF)
     {
         recurseAddTree(treePtr, &buf[0]);
@@ -140,4 +144,19 @@ void inOrderTraversal(node * treePtr)
     {
         printf("skipping right subtree\n");
     }
+}
+
+void freeTree(node * treePtr)
+{
+    if(treePtr->left)
+    {
+        freeTree(treePtr->left);
+    }
+    if(treePtr->right)
+    {
+        freeTree(treePtr->right);
+    }
+    free(treePtr->left);
+    free(treePtr->right);
+    return;
 }

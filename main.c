@@ -32,6 +32,8 @@ int main(int argc, char * argv[])
 
     inOrderTraversal(tree);
 
+    freeTree(tree);
+
     if (fp != stdin)
     {
         fclose(fp);
