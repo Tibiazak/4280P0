@@ -120,7 +120,7 @@ node * buildTree(FILE * fp)
 void inOrderTraversal(node * treePtr)
 {
     printf("Entering inOrder\n");
-    if(treePtr->left)
+    if(treePtr->left != NULL)
     {
         printf("Entering left subtree\n");
         inOrderTraversal(treePtr->left);
