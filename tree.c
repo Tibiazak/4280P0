@@ -63,7 +63,7 @@ void recurseAddTree(node * currentNode, char* string)
         {
             printf("No left subtree, creating...\n");
             node * tempnode = createNode();
-            strcpy(tempnode.value, string);
+            strcpy(tempnode->value, string);
             currentNode->left = tempnode;
             return;
         }
