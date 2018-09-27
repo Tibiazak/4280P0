@@ -118,11 +118,22 @@ void inOrderTraversal(node * treePtr)
     printf("Entering inOrder\n");
     if(treePtr->left)
     {
+        printf("Entering left subtree\n");
         inOrderTraversal(treePtr->left);
     }
+    else
+    {
+        printf("Skipping left subtree\n");
+    }
+    printf("About to print current node:\n");
     printf("Current node: %s\n", treePtr->value);
     if(treePtr->right)
     {
+        printf("Entering right subtree\n");
         inOrderTraversal(treePtr->right);
+    }
+    else
+    {
+        printf("skipping right subtree\n");
     }
 }
