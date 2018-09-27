@@ -23,28 +23,28 @@ node * createNode()
 
 void recurseAddTree(node * currentNode, char* string)
 {
-    printf("Entered recurseAddTree\n");
+//    printf("Entered recurseAddTree\n");
     int len = strlen(string);
     if(currentNode->value[0] == 0)
     {
-        printf("Add to this node\n");
+//        printf("Add to this node\n");
         strcpy(currentNode->value, string);
         return;
     }
-    printf("Getting length of value in current node\n");
+//    printf("Getting length of value in current node\n");
     int templen = strlen(currentNode->value);
 
-    printf("Got value\n");
+//    printf("Got value\n");
     if (len == templen)
     {
-        printf("Need to add to this node that already exists\n");
+//        printf("Need to add to this node that already exists\n");
     }
     else if(len > templen)
     {
-        printf("Needs to go into right subtree\n");
+//        printf("Needs to go into right subtree\n");
         if(!currentNode->right)
         {
-            printf("No right subtree, creating...\n");
+//            printf("No right subtree, creating...\n");
             node * tempnode = createNode();
             strcpy(tempnode->value, string);
             currentNode->right = tempnode;
@@ -52,16 +52,16 @@ void recurseAddTree(node * currentNode, char* string)
         }
         else
         {
-            printf("Right subtree exists, recursing\n");
+//            printf("Right subtree exists, recursing\n");
             recurseAddTree(currentNode->right, string);
         }
     }
     else if(len < templen)
     {
-        printf("Needs to go into left subtree\n");
+//        printf("Needs to go into left subtree\n");
         if(!currentNode->left)
         {
-            printf("No left subtree, creating...\n");
+//            printf("No left subtree, creating...\n");
             node * tempnode = createNode();
             strcpy(tempnode->value, string);
             currentNode->left = tempnode;
@@ -69,7 +69,7 @@ void recurseAddTree(node * currentNode, char* string)
         }
         else
         {
-            printf("Left subtree exists, recursing\n");
+//            printf("Left subtree exists, recursing\n");
             recurseAddTree(currentNode->left, string);
         }
     }
@@ -81,76 +81,40 @@ node * buildTree(FILE * fp)
     while(fscanf(fp, "%s", buf) != EOF)
     {
         recurseAddTree(treePtr, &buf[0]);
-//        length = strlen(buf);
-//        if(!treePtr)
-//        {
-//            printf("Null tree pointer, creating tree\n");
-//            tree.left = NULL;
-//            tree.right = NULL;
-//            strcpy(tree.value, buf);
-//            treePtr = &tree;
-//        }
-//        else
-//        {
-//            printf("Tree exists, adding data\n");
-//            int templen = strlen(treePtr->value);
-//            if (length == templen)
-//            {
-//                printf("Strings are the same length\n");
-//            }
-//            else if(length > templen)
-//            {
-//                printf("New string is longer than old string\n");
-//                if(!tree.right)
-//                {
-//                    printf("No right subtree, creating one\n");
-//                    node tempnode;
-//                    tempnode.right = NULL;
-//                    tempnode.left = NULL;
-//                    strcpy(tempnode.value, buf);
-//                    treePtr->right = &tempnode;
-//                }
-//                else if(strlen(tree.right->value) >= )
-//            }
-//            else
-//            {
-//                printf("New string is shorter than old string\n");
-//            }
-//        }
     }
-    printf("Exiting buildTree\n");
+//    printf("Exiting buildTree\n");
     return treePtr;
 }
 
 void inOrderTraversal(node * treePtr)
 {
-    printf("Entering inOrder\n");
+//    printf("Entering inOrder\n");
     if(treePtr->left)
     {
-        printf("Entering left subtree\n");
+//        printf("Entering left subtree\n");
         inOrderTraversal(treePtr->left);
     }
     else
     {
-        printf("Skipping left subtree\n");
+//        printf("Skipping left subtree\n");
     }
-    printf("About to print current node:\n");
-    printf("Current node: %s\n", treePtr->value);
+//    printf("About to print current node:\n");
+//    printf("Current node: %s\n", treePtr->value);
     if(treePtr->right)
     {
-        printf("Entering right subtree\n");
+//        printf("Entering right subtree\n");
         inOrderTraversal(treePtr->right);
     }
     else
     {
-        printf("skipping right subtree\n");
+//        printf("skipping right subtree\n");
     }
 }
 
 void preOrderTraversal(node * treePtr)
 {
-    printf("Entering Preorder\n");
-    printf("Current node: %s\n", treePtr->value);
+//    printf("Entering Preorder\n");
+//    printf("Current node: %s\n", treePtr->value);
     if(treePtr->left)
     {
         preOrderTraversal(treePtr->left);
@@ -163,7 +127,7 @@ void preOrderTraversal(node * treePtr)
 
 void postOrderTraversal(node * treePtr)
 {
-    printf("Entering Postorder\n");
+//    printf("Entering Postorder\n");
     if(treePtr->left)
     {
         postOrderTraversal(treePtr->left);
@@ -172,7 +136,7 @@ void postOrderTraversal(node * treePtr)
     {
         postOrderTraversal(treePtr->right);
     }
-    printf("Current node: %s\n", treePtr->value);
+//    printf("Current node: %s\n", treePtr->value);
 }
 
 void printParseTree(node *rootP,int level) {
