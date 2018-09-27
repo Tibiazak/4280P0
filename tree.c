@@ -16,7 +16,7 @@ void recurseAddTree(node * currentNode, char* string)
 {
     printf("Entered recurseAddTree\n");
     int len = strlen(string);
-    if(strlen(currentNode->value == 0))
+    if(currentNode->value[0] == 0)
     {
         printf("Add to this node\n");
         strcpy(currentNode->value, string);
