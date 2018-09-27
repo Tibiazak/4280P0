@@ -125,7 +125,7 @@ node * buildTree(FILE * fp)
 void inOrderTraversal(node * treePtr)
 {
     printf("Entering inOrder\n");
-    if(treePtr->left != NULL)
+    if(treePtr->left)
     {
         printf("Entering left subtree\n");
         inOrderTraversal(treePtr->left);
@@ -145,6 +145,34 @@ void inOrderTraversal(node * treePtr)
     {
         printf("skipping right subtree\n");
     }
+}
+
+void preOrderTraversal(node * treePtr)
+{
+    printf("Entering Preorder\n");
+    printf("Current node: %s\n", treePtr->value);
+    if(treePtr->left)
+    {
+        preOrderTraversal(treePtr->left);
+    }
+    if(treePtr->right)
+    {
+        preOrderTraversal(treePtr->right);
+    }
+}
+
+void postOrderTraversal(node * treePtr)
+{
+    printf("Entering Postorder\n");
+    if(treePtr->left)
+    {
+        postOrderTraversal(treePtr->left);
+    }
+    if(treePtr->right)
+    {
+        postOrderTraversal(treePtr->right);
+    }
+    printf("Current node: %s\n", treePtr->value);
 }
 
 void freeTree(node * treePtr)

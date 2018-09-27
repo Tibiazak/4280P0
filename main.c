@@ -30,8 +30,9 @@ int main(int argc, char * argv[])
 
     tree = buildTree(fp);
 
+    preOrderTraversal(tree);
     inOrderTraversal(tree);
-
+    postOrderTraversal(tree);
     freeTree(tree);
 
     if (fp != stdin)
