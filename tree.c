@@ -11,7 +11,7 @@
 char buf[100];
 int length;
 node tree;
-int stringMax;
+int stringMax = 20;
 
 node * createNode()
 {
