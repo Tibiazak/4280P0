@@ -53,13 +53,9 @@ int main(int argc, char * argv[])
     inOrderTraversal(tree);
     postOrderTraversal(tree);
 
-    printf("about to strcpy\n");
     strcpy(file, filename);
-    printf("about to strcat\n");
     strcat(file, ".fs18");
-    printf("about to fopen\n");
     outfile = fopen(file, "w");
-    printf("about to printparsetree\n");
     printParseTree(tree, 0, outfile);
     freeTree(tree);
 
