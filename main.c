@@ -53,7 +53,6 @@ int main(int argc, char * argv[])
     inOrderTraversal(tree);
     postOrderTraversal(tree);
 
-    outfile = fopen(strcat(filename, ".fs18"), "w");
     printf("about to strcpy\n");
     strcpy(file, filename);
     printf("about to strcat\n");
