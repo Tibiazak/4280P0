@@ -61,7 +61,7 @@ int main(int argc, char * argv[])
 //    printParseTree(tree, 0, outfile);
     freeTree(tree);
 
-    fclose(outfile);
+//    fclose(outfile);
 
     if (fp != stdin)
     {
