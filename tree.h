@@ -11,7 +11,7 @@ node * buildTree(FILE * fp);
 void inOrderTraversal(node * treePtr);
 void preOrderTraversal(node * treePtr);
 void postOrderTraversal(node * treePtr);
-void printParseTree(node *rootP,int level);
+void printParseTree(node *rootP,int level, FILE * fp);
 void freeTree(node * treePtr);
 
 #endif //TREE_H

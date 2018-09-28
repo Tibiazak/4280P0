@@ -164,21 +164,21 @@ void postOrderTraversal(node * treePtr)
     {
         postOrderTraversal(treePtr->right);
     }
-//    printf("Current node: %s\n", treePtr->value);
+    printf("Current node: %s\n", treePtr->value);
 }
 
-void printParseTree(node *rootP,int level) {
+void printParseTree(node *rootP,int level, FILE * fp) {
     if (rootP==NULL) return;
-    printf("%*c%d:%s ",level*2,' ',(int)strlen(rootP->values[0]),rootP->values[0]);
+    fprintf(fp, "%*c%d:%s ",level*2,' ',(int)strlen(rootP->values[0]),rootP->values[0]);
     int i;
     for(i = 1; i < stringMax; i++)
     {
         if(rootP->values[i][0] != 0)
         {
-            printf("%s ", rootP->values[i]);
+            fprintf(fp, "%s ", rootP->values[i]);
         }
     }
-    printf("\n");
+    fprintf(fp, "\n");
     printParseTree(rootP->left,level+1);
     printParseTree(rootP->right,level+1);
 }

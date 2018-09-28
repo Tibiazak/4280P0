@@ -10,6 +10,7 @@
 int main(int argc, char * argv[])
 {
     FILE * fp;
+    FILE * outfile;
     node *tree;
     char * filename;
 
@@ -49,8 +50,13 @@ int main(int argc, char * argv[])
     preOrderTraversal(tree);
     inOrderTraversal(tree);
     postOrderTraversal(tree);
-    printParseTree(tree, 0);
+
+    FILE * outfile = fopen(filename + ".fs18", "w");
+
+    printParseTree(tree, 0, outfile);
     freeTree(tree);
+
+    fclose(outfile);
 
     if (fp != stdin)
     {
