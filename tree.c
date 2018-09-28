@@ -34,7 +34,7 @@ void printNode(node * treePtr, int level, FILE * fp)
     int i;
     for(i = 1; i < stringMax; i++)
     {
-        if(rootP->values[i][0] != 0)
+        if(treePtr->values[i][0] != 0)
         {
             fprintf(fp, "%s ", treePtr->values[i]);
         }
@@ -165,7 +165,7 @@ void inOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
     {
-        inOrderRecursive(treePtr->left, level++, fp)
+        inOrderRecursive(treePtr->left, level++, fp);
     }
     printNode(treePtr, level, fp);
     if(treePtr->right)
