@@ -28,7 +28,7 @@ node * createNode()
     return newnode;
 }
 
-void printNode(node * treePtr, FILE * fp)
+void printNode(node * treePtr, int level, FILE * fp)
 {
     fprintf(fp, "%*c%d:%s ", level*2, ' ', (int)strlen(treePtr->values[0]), treePtr->values[0]);
     int i;
@@ -167,7 +167,7 @@ void inOrderRecursive(node * treePtr, int level, FILE * fp)
     {
         inOrderRecursive(treePtr->left, level++, fp)
     }
-    printNode(treePtr, fp);
+    printNode(treePtr, level, fp);
     if(treePtr->right)
     {
         inOrderRecursive(treePtr->right, level++, fp);
