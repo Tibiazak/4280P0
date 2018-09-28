@@ -24,8 +24,10 @@ int main(int argc, char * argv[])
     }
     else
     {
-        printf("File listed: %s\n", argv[argc-1]);
-        fp = fopen(argv[1], "r");
+        printf("File listed: %s.fs18\n", argv[argc-1]);
+        strcpy(file, argv[1]);
+        strcat(file, ".fs18");
+        fp = fopen(file, "r");
         filename = argv[1];
     }
 
