@@ -13,7 +13,7 @@ int main(int argc, char * argv[])
     FILE * fp;
     FILE * outfile;
     node *tree;
-    char * filename;
+    char file[30];
 
     if (argc == 1)
     {
@@ -52,7 +52,10 @@ int main(int argc, char * argv[])
     inOrderTraversal(tree);
     postOrderTraversal(tree);
 
-    outfile = fopen(strcat(filename, ".fs18"), "w");
+    strcpy(file, filename);
+    strcat(file, ".fs18");
+
+    outfile = fopen(file, "w");
 
     printParseTree(tree, 0, outfile);
     freeTree(tree);
