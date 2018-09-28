@@ -8,7 +8,7 @@
 #include "node.h"
 
 node * buildTree(FILE * fp);
-void inOrderTraversal(node * treePtr);
+void inOrderTraversal(node * treePtr, char * filename);
 void preOrderTraversal(node * treePtr);
 void postOrderTraversal(node * treePtr);
 void printParseTree(node *rootP,int level, FILE * fp);
