@@ -14,6 +14,7 @@ int main(int argc, char * argv[])
     FILE * outfile;
     node *tree;
     char file[30];
+    char * filename;
 
     if (argc == 1)
     {
