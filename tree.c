@@ -164,7 +164,7 @@ void postOrderTraversal(node * treePtr)
     {
         postOrderTraversal(treePtr->right);
     }
-    printf("Current node: %s\n", treePtr->value);
+//    printf("Current node: %s\n", treePtr->value);
 }
 
 void printParseTree(node *rootP,int level, FILE * fp) {
@@ -179,8 +179,8 @@ void printParseTree(node *rootP,int level, FILE * fp) {
         }
     }
     fprintf(fp, "\n");
-    printParseTree(rootP->left,level+1);
-    printParseTree(rootP->right,level+1);
+    printParseTree(rootP->left,level+1, fp);
+    printParseTree(rootP->right,level+1, fp);
 }
 
 void freeTree(node * treePtr)

@@ -51,7 +51,7 @@ int main(int argc, char * argv[])
     inOrderTraversal(tree);
     postOrderTraversal(tree);
 
-    FILE * outfile = fopen(filename + ".fs18", "w");
+    outfile = fopen((filename + ".fs18"), "w");
 
     printParseTree(tree, 0, outfile);
     freeTree(tree);
