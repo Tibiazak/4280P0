@@ -51,9 +51,9 @@ int main(int argc, char * argv[])
     preOrderTraversal(tree);
     inOrderTraversal(tree);
     postOrderTraversal(tree);
-
+    printf("About to strcat\n");
     outfile = fopen(strcat(filename, ".fs18"), "w");
-
+    printf("Strcat successful, filename: %s\n", filename);
     printParseTree(tree, 0, outfile);
     freeTree(tree);
 
