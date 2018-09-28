@@ -51,18 +51,14 @@ int main(int argc, char * argv[])
     preOrderTraversal(tree);
     inOrderTraversal(tree);
     postOrderTraversal(tree);
-<<<<<<< HEAD
-   
+
     outfile = fopen(strcat(filename, ".fs18"), "w");
-    
-=======
 
     strcpy(file, filename);
     strcat(file, ".fs18");
 
     outfile = fopen(file, "w");
 
->>>>>>> fea669b4f12c9bbaf6daa56917f8aed36e39f2df
     printParseTree(tree, 0, outfile);
     freeTree(tree);
 
