@@ -128,39 +128,6 @@ node * buildTree(FILE * fp)
     return treePtr;
 }
 
-//void inOrderTraversal(node * treePtr, int level, FILE * filename)
-//{
-//    strcpy(buf, filename);
-//    strcat(buf, ".inorder");
-//    FILE * fp = fopen(buf, "w");
-//    if(!fp)
-//    {
-//        printf("ERROR: unable to open file!\n");
-//        exit(1);
-//    }
-//    printf("Entering inOrder\n");
-//    if(treePtr->left)
-//    {
-//        printf("Entering left subtree\n");
-//        inOrderTraversal(treePtr->left, level++, );
-//    }
-//    else
-//    {
-//        printf("Skipping left subtree\n");
-//    }
-//    printf("About to print current node:\n");
-//    printf("Current node: %s\n", treePtr->value);
-//    if(treePtr->right)
-//    {
-//        printf("Entering right subtree\n");
-//        inOrderTraversal(treePtr->right);
-//    }
-//    else
-//    {
-//        printf("skipping right subtree\n");
-//    }
-//}
-
 void inOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
@@ -187,6 +154,7 @@ void inOrderTraversal(node * treePtr, char * filename)
 
 void preOrderRecursive(node * treePtr, int level, FILE * fp)
 {
+    printf("Preorder level %i\n", level);
     printNode(treePtr, level, fp);
     if(treePtr->left)
     {
@@ -194,7 +162,7 @@ void preOrderRecursive(node * treePtr, int level, FILE * fp)
     }
     if(treePtr->right)
     {
-        preOrderRecursive(treePtr->right, level++, fp);
+        preOrderRecursive(treePtr->right, level++,  fp);
     }
 }
 
