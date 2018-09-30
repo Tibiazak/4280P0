@@ -171,7 +171,6 @@ void inOrderTraversal(node * treePtr, char * filename)
 // It calls itself and printNode as appropriate
 void preOrderRecursive(node * treePtr, int level, FILE * fp)
 {
-    printf("Preorder level %i\n", level);
     printNode(treePtr, level, fp);
     if(treePtr->left)
     {
