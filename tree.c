@@ -177,7 +177,7 @@ void inOrderRecursive(node * treePtr, int level, FILE * fp)
 void inOrderTraversal(node * treePtr, char * filename)
 {
     strcpy(buf, filename);
-    strcat(buf, "inorder");
+    strcat(buf, ".inorder");
     FILE * fp = fopen(buf, "w");
     //check for error
 
@@ -185,33 +185,54 @@ void inOrderTraversal(node * treePtr, char * filename)
     fclose(fp);
 }
 
-void preOrderTraversal(node * treePtr)
+void preOrderRecursive(node * treePtr, int level, FILE * fp)
 {
-//    printf("Entering Preorder\n");
-//    printf("Current node: %s\n", treePtr->value);
+    printNode(treePtr, level, fp);
     if(treePtr->left)
     {
-        preOrderTraversal(treePtr->left);
+        preOrderRecursive(treePtr->left, level++, fp);
     }
     if(treePtr->right)
     {
-        preOrderTraversal(treePtr->right);
+        preOrderRecursive(treePtr->right, level++, fp);
     }
 }
 
-void postOrderTraversal(node * treePtr)
+void preOrderTraversal(node * treePtr, char * filename)
 {
-//    printf("Entering Postorder\n");
+    strcpy(buf, filename);
+    strcat(buf, ".preorder");
+    FILE * fp = fopen(buf, "w");
+    //check for error
+
+    preOrderRecursive(treePtr, 0, fp);
+    fclose(fp);
+}
+
+void postOrderRecursive(node * treePtr, int level, FILE * fp)
+{
     if(treePtr->left)
     {
-        postOrderTraversal(treePtr->left);
+        postOrderRecursive(treePtr->left, level++, fp);
     }
     if(treePtr->right)
     {
-        postOrderTraversal(treePtr->right);
+        postOrderRecursive(treePtr->right, level++, fp);
     }
-//    printf("Current node: %s\n", treePtr->value);
+    printNode(treePtr, level, fp);
 }
+
+void postOrderTraversal(node * treePtr, char * filename)
+{
+    strcpy(buf, filename);
+    strcat(buf, ".postorder");
+    FILE * fp = fopen(buf, "w");
+    //check for error
+
+    postOrderRecursive(treePtr, 0, fp);
+    fclose(fp);
+}
+
 
 void printParseTree(node *rootP,int level, FILE * fp) {
     if (rootP==NULL) return;

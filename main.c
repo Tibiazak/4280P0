@@ -51,9 +51,9 @@ int main(int argc, char * argv[])
 
     tree = buildTree(fp);
 
-    preOrderTraversal(tree);
+    preOrderTraversal(tree, filename);
     inOrderTraversal(tree, filename);
-    postOrderTraversal(tree);
+    postOrderTraversal(tree, filename);
 
 //    strcpy(file, filename);
 //    strcat(file, ".fs18");
