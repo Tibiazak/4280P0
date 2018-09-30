@@ -158,11 +158,11 @@ void preOrderRecursive(node * treePtr, int level, FILE * fp)
     printNode(treePtr, level, fp);
     if(treePtr->left)
     {
-        preOrderRecursive(treePtr->left, level++, fp);
+        preOrderRecursive(treePtr->left, ++level, fp);
     }
     if(treePtr->right)
     {
-        preOrderRecursive(treePtr->right, level++,  fp);
+        preOrderRecursive(treePtr->right, ++level,  fp);
     }
 }
 
