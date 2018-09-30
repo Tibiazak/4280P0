@@ -132,12 +132,12 @@ void inOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
     {
-        inOrderRecursive(treePtr->left, ++level, fp);
+        inOrderRecursive(treePtr->left, (level+1), fp);
     }
     printNode(treePtr, level, fp);
     if(treePtr->right)
     {
-        inOrderRecursive(treePtr->right, ++level, fp);
+        inOrderRecursive(treePtr->right, (level+1), fp);
     }
 }
 
@@ -158,11 +158,11 @@ void preOrderRecursive(node * treePtr, int level, FILE * fp)
     printNode(treePtr, level, fp);
     if(treePtr->left)
     {
-        preOrderRecursive(treePtr->left, ++level, fp);
+        preOrderRecursive(treePtr->left, (level+1), fp);
     }
     if(treePtr->right)
     {
-        preOrderRecursive(treePtr->right, ++level,  fp);
+        preOrderRecursive(treePtr->right, (level+1),  fp);
     }
 }
 
@@ -181,11 +181,11 @@ void postOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
     {
-        postOrderRecursive(treePtr->left, ++level, fp);
+        postOrderRecursive(treePtr->left, (level+1), fp);
     }
     if(treePtr->right)
     {
-        postOrderRecursive(treePtr->right, ++level, fp);
+        postOrderRecursive(treePtr->right, (level+1), fp);
     }
     printNode(treePtr, level, fp);
 }
