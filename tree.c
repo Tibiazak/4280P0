@@ -14,6 +14,9 @@ int length;
 node tree;
 int stringMax = 20;
 
+
+// createNode creates an initializes a node
+
 node * createNode()
 {
     node* newnode = (node *)malloc(sizeof(node));
@@ -28,6 +31,8 @@ node * createNode()
     return newnode;
 }
 
+
+// This prints a node with the correct level formatting
 void printNode(node * treePtr, int level, FILE * fp)
 {
     fprintf(fp, "%*c%d:%s ", level*2, ' ', (int)strlen(treePtr->values[0]), treePtr->values[0]);
@@ -42,6 +47,8 @@ void printNode(node * treePtr, int level, FILE * fp)
     fprintf(fp, "\n");
 }
 
+
+// This recursively adds a single node to the correct spot in the tree
 void recurseAddTree(node * currentNode, char* string)
 {
 //    printf("Entered recurseAddTree\n");
@@ -58,7 +65,7 @@ void recurseAddTree(node * currentNode, char* string)
 //    printf("Got value\n");
     if (len == templen)
     {
-        printf("Need to add to this node that already exists\n");
+//        printf("Need to add to this node that already exists\n");
         int ptr = 0;
         while(true)
         {
@@ -117,6 +124,8 @@ void recurseAddTree(node * currentNode, char* string)
     }
 }
 
+
+// This is the global function to build a tree from input
 node * buildTree(FILE * fp)
 {
     node * treePtr = createNode();
@@ -128,6 +137,8 @@ node * buildTree(FILE * fp)
     return treePtr;
 }
 
+// This is the recursive helper function for inOrder traversal
+// It calls itself and printNode as appropriate
 void inOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
@@ -141,17 +152,23 @@ void inOrderRecursive(node * treePtr, int level, FILE * fp)
     }
 }
 
+//This is the global inOrder function, it opens the output file and calls inOrderRecursive
 void inOrderTraversal(node * treePtr, char * filename)
 {
     strcpy(buf, filename);
     strcat(buf, ".inorder");
     FILE * fp = fopen(buf, "w");
-    //check for error
-
+    if(!fp)
+    {
+        printf("ERROR opening inorder file!\n");
+        exit(1);
+    }
     inOrderRecursive(treePtr, 0, fp);
     fclose(fp);
 }
 
+// This is the recursive helper function for preOrder traversal
+// It calls itself and printNode as appropriate
 void preOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     printf("Preorder level %i\n", level);
@@ -166,6 +183,7 @@ void preOrderRecursive(node * treePtr, int level, FILE * fp)
     }
 }
 
+//This is the global inOrder function, it opens the output file and calls postOrderRecursive
 void preOrderTraversal(node * treePtr, char * filename)
 {
     strcpy(buf, filename);
@@ -177,6 +195,8 @@ void preOrderTraversal(node * treePtr, char * filename)
     fclose(fp);
 }
 
+// This is the recursive helper function for postOrder traversal
+// It calls itself and printNode as appropriate
 void postOrderRecursive(node * treePtr, int level, FILE * fp)
 {
     if(treePtr->left)
@@ -190,6 +210,7 @@ void postOrderRecursive(node * treePtr, int level, FILE * fp)
     printNode(treePtr, level, fp);
 }
 
+//This is the global inOrder function, it opens the output file and calls postOrderRecursive
 void postOrderTraversal(node * treePtr, char * filename)
 {
     strcpy(buf, filename);
@@ -201,23 +222,25 @@ void postOrderTraversal(node * treePtr, char * filename)
     fclose(fp);
 }
 
+//Recursive function used to print out the tree in order, used for debugging
 
-void printParseTree(node *rootP,int level, FILE * fp) {
-    if (rootP==NULL) return;
-    fprintf(fp, "%*c%d:%s ",level*2,' ',(int)strlen(rootP->values[0]),rootP->values[0]);
-    int i;
-    for(i = 1; i < stringMax; i++)
-    {
-        if(rootP->values[i][0] != 0)
-        {
-            fprintf(fp, "%s ", rootP->values[i]);
-        }
-    }
-    fprintf(fp, "\n");
-    printParseTree(rootP->left,level+1, fp);
-    printParseTree(rootP->right,level+1, fp);
-}
+//void printParseTree(node *rootP,int level, FILE * fp) {
+//    if (rootP==NULL) return;
+//    fprintf(fp, "%*c%d:%s ",level*2,' ',(int)strlen(rootP->values[0]),rootP->values[0]);
+//    int i;
+//    for(i = 1; i < stringMax; i++)
+//    {
+//        if(rootP->values[i][0] != 0)
+//        {
+//            fprintf(fp, "%s ", rootP->values[i]);
+//        }
+//    }
+//    fprintf(fp, "\n");
+//    printParseTree(rootP->left,level+1, fp);
+//    printParseTree(rootP->right,level+1, fp);
+//}
 
+// This is a global function used to free all the dynamically allocated memory
 void freeTree(node * treePtr)
 {
     if(treePtr->left)
